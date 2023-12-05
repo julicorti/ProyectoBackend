@@ -38,7 +38,7 @@ class ProductManager {
 
     fs.writeFileSync(this.path, JSON.stringify(json));
   }
-  getProductById(id) {
+  async getProductById(id) {
     let found = "Not Found";
     let f = JSON.parse(fs.readFileSync(this.path));
 
@@ -49,7 +49,7 @@ class ProductManager {
     });
     return found;
   }
-  getProducts() {
+  async getProducts() {
     return JSON.parse(fs.readFileSync(this.path));
   }
 
@@ -89,30 +89,5 @@ class Product {
   }
 }
 
-const PM = new ProductManager("./products.json");
 
-// agregar productos
-PM.addProduct(
-  "Remera",
-  "La colección Vans X Stranger Things 4 da vida al mundo de Stranger Things.",
-  31,
-  "https://mmgrim2.azureedge.net/MediaFiles/Grimoldi/2023/6/12/8476868.jpg",
-  20
-);
-PM.addProduct(
-  "Remera",
-  "La colección Vans X Stranger Things 4 da vida al mundo de Stranger Things.",
-  31,
-  "https://mmgrim2.azureedge.net/MediaFiles/Grimoldi/2023/6/12/8476868.jpg",
-  20
-);
-PM.addProduct(
-  "Remera",
-  "La colección Vans X Stranger Things 4 da vida al mundo de Stranger Things.",
-  31,
-  "https://mmgrim2.azureedge.net/MediaFiles/Grimoldi/2023/6/12/8476868.jpg",
-  20
-);
-
-PM.updateProduct(1, { title: "POLO" });
-PM.deleteProduct(2);
+export default ProductManager; 
