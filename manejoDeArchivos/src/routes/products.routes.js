@@ -16,18 +16,51 @@ productsRouter.get("/", async (req, res) => {
   }
   return res.send(newProducts);
 });
-/* productsRouter.post("/products", async (req, res) => {
-  let products = await productManager.getProducts();
-  const nuevoProd = req.body;
-  const id = nuevoProd.lebgth + 1;
-  products.push({ ...nuevoProd, id });
-  res.send({ status: "OK", message: "Producto Creado" });
-}); */
 productsRouter.get("/:pid", async (req, res) => {
   const { pid } = req.params;
   const products = await productManager.getProductById(pid);
-
+  
   res.send(products);
 });
 
+productsRouter.post("/", async(req, res)=>{
+
+ /*  const nuevoProducto = req.body;
+
+  if (!nuevoProducto || !nuevoProducto.stock || !nuevoProducto.description || !nuevoProducto.price || !nuevoProducto.title || !nuevoProducto.thumnail) {
+    return res.status(400).json({ error: 'Por favor, proporcione todos los campos del producto.' });
+  }
+
+  const addedProduct = productManager.addProduct(nuevoProducto);
+
+  res.send(addedProduct); */
+  const nuevoProducto = req.body;
+
+  try {
+    const addedProduct = productManager.addProduct(nuevoProducto);
+    res.status(201).json(addedProduct);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+})
+productsRouter.put('/:pId', async(req, res) =>{
+    const productId = productManager.getProductById()
+    const updateProd = req.body;
+    const upadteProduct = productManager.updateProduct(productId, updateProd);
+    if (!upadteProduct) {
+      return res.status(404).json({ error: 'Producto no encontrado.' });
+    }
+  
+    res.json(upadteProduct);
+})
+
+
+productsRouter.delete('/:pId', async(req, res) =>{
+  const {pId} = req.params;
+  const productDeleted = await productManager.deleteProduct(pId);
+  if(!productDeleted){
+   return res.status(404).send({message: 'product not found'});
+  }
+  return res.send({message: 'product deleted'});
+});
 export default productsRouter;

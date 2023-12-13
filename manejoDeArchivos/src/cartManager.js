@@ -28,8 +28,8 @@ class CartManager {
     }
   }
 async addProductToCart(pId, cId){
-    const carts = await this.getCarts();
-    try {
+  try {
+      const carts = await this.getCarts();
         const updateCarts = carts.map(cart =>{
             if(cart.id === +cId){
             const existingProduct = cart.products.find( c=> pId.id === +pId);

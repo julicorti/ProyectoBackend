@@ -22,25 +22,25 @@ class ProductManager {
   }
 
   async addProduct(title, description, price, thumbnail, stock, code) {
-   /*  if(!title || !description || !price || !thumbnail || !code || !stock){
-      return console.log("Todos los campos son obligatorios!!")
-    } */
-    let p = new Product(
-      ++this.constructor.numID,
-      title,
-      description,
-      price,
-      thumbnail,
-      stock,
-      code
-    );
-
-    let json = JSON.parse(fs.readFileSync(this.path));
-
-    json.products.push(p);
-
-    fs.writeFileSync(this.path, JSON.stringify(json));
-  }
+    /*  if(!title || !description || !price || !thumbnail || !code || !stock){
+       return console.log("Todos los campos son obligatorios!!")
+     }  */
+     let p = new Product(
+       ++this.constructor.numID,
+       title,
+       description,
+       price,
+       thumbnail,
+       stock,
+       code
+     );
+ 
+     let json = JSON.parse(fs.readFileSync(this.path));
+ 
+     json.products.push(p);
+ 
+     fs.writeFileSync(this.path, JSON.stringify(json));
+   }
   async getProductById(id) {
     let found = "Not Found";
     let f = JSON.parse(fs.readFileSync(this.path));
@@ -56,14 +56,15 @@ class ProductManager {
     return JSON.parse(fs.readFileSync(this.path));
   }
 
-  deleteProduct(id) {
-    let f = JSON.parse(fs.readFileSync(this.path));
+  async deleteProduct(id) {
+     let f = JSON.parse(fs.readFileSync(this.path));
 
     f.products = f.products.filter((p) => {
       return p.id != id;
     });
 
-    fs.writeFileSync(this.path, JSON.stringify(f));
+    fs.writeFileSync(this.path, JSON.stringify(f)); 
+    
   }
 
   updateProduct(id, newData) {
