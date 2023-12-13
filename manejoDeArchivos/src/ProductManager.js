@@ -21,25 +21,31 @@ class ProductManager {
     }
   }
 
-  async addProduct(title, description, price, thumbnail, stock, code) {
-    /*  if(!title || !description || !price || !thumbnail || !code || !stock){
-       return console.log("Todos los campos son obligatorios!!")
-     }  */
+  async addProduct({title, description, price, thumbnail, stock, code, available = true, category}) {
+    console.log(!title || !description || !price || !thumbnail || !code || !stock || !category)
+    
+     if(!title || !description || !price || !thumbnail || !stock || !category){
+       throw new Error("Todos los campos son obligatorios!")
+     }  
      let p = new Product(
-       ++this.constructor.numID,
+       {id :++this.constructor.numID,
        title,
        description,
        price,
+       available,
+       category,
        thumbnail,
-       stock,
-       code
+       stock}
      );
+
  
      let json = JSON.parse(fs.readFileSync(this.path));
  
      json.products.push(p);
  
      fs.writeFileSync(this.path, JSON.stringify(json));
+
+     return p
    }
   async getProductById(id) {
     let found = "Not Found";
@@ -69,25 +75,31 @@ class ProductManager {
 
   updateProduct(id, newData) {
     let json = JSON.parse(fs.readFileSync(this.path));
+    let modified
 
     json.products = json.products.map((p) => {
       if (p.id == id) {
         p = { ...p, ...newData };
+        modified = p
       }
       return p;
     });
 
     fs.writeFileSync(this.path, JSON.stringify(json));
+
+    return modified
   }
 }
 
 class Product {
-  constructor(id, title, description, price, thumbnail, stock) {
+  constructor({id, title, description, price, available, category, thumbnail, stock}) {
     this.id = id;
     this.title = title;
     this.description = description;
     this.price = price;
     this.thumbnail = thumbnail;
+    this.available = available;
+    this.category = category;
     this.stock = stock;
     this.code = Math.floor(Math.random() * 100);
   }

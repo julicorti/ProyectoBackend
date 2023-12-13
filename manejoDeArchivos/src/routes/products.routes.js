@@ -23,30 +23,19 @@ productsRouter.get("/:pid", async (req, res) => {
   res.send(products);
 });
 
-productsRouter.post("/", async(req, res)=>{
-
- /*  const nuevoProducto = req.body;
-
-  if (!nuevoProducto || !nuevoProducto.stock || !nuevoProducto.description || !nuevoProducto.price || !nuevoProducto.title || !nuevoProducto.thumnail) {
-    return res.status(400).json({ error: 'Por favor, proporcione todos los campos del producto.' });
-  }
-
-  const addedProduct = productManager.addProduct(nuevoProducto);
-
-  res.send(addedProduct); */
+productsRouter.post("/", async (req, res)=>{
   const nuevoProducto = req.body;
-
   try {
-    const addedProduct = productManager.addProduct(nuevoProducto);
+    const addedProduct = await productManager.addProduct(nuevoProducto);
     res.status(201).json(addedProduct);
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
 })
 productsRouter.put('/:pId', async(req, res) =>{
-    const productId = productManager.getProductById()
+    const id = req.params.pId
     const updateProd = req.body;
-    const upadteProduct = productManager.updateProduct(productId, updateProd);
+    const upadteProduct = productManager.updateProduct(id, updateProd);
     if (!upadteProduct) {
       return res.status(404).json({ error: 'Producto no encontrado.' });
     }
