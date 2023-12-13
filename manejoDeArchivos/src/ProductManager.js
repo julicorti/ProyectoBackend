@@ -21,7 +21,10 @@ class ProductManager {
     }
   }
 
-  addProduct(title, description, price, thumbnail, stock, code) {
+  async addProduct(title, description, price, thumbnail, stock, code) {
+   /*  if(!title || !description || !price || !thumbnail || !code || !stock){
+      return console.log("Todos los campos son obligatorios!!")
+    } */
     let p = new Product(
       ++this.constructor.numID,
       title,
