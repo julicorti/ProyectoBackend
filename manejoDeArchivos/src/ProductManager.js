@@ -69,11 +69,11 @@ class ProductManager {
       return p.id != id;
     });
 
-    fs.writeFileSync(this.path, JSON.stringify(f)); 
+    await fs.writeFileSync(this.path, JSON.stringify(f)); 
     
   }
 
-  updateProduct(id, newData) {
+  async updateProduct(id, newData) {
     let json = JSON.parse(fs.readFileSync(this.path));
     let modified
 
