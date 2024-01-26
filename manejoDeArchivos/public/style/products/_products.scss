@@ -1,0 +1,44 @@
+.pagina {
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .contenedor-prods {
+   
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+    width: 20%;
+    gap: 10px;
+
+    .products {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        flex-direction: column;
+      align-items: center;
+      border-radius: 2px;
+      border: solid 1px black;
+      width: 500px;
+      background-color: rgba(30, 145, 199, 0.621);
+      height: 300px;
+      border-radius: 10px;
+      font-family: Poppins, sans-serif;
+      h1{
+        font-size: 30px;
+      }
+      button{
+        border-radius: 5px;
+        border-color: none;
+        color: white;
+        height: 50px;
+        width: 120px;
+        background-color: rgba(109, 112, 200, 0.588);
+        font-size: 15px;
+      }
+    }
+  }
+}

@@ -1,0 +1,68 @@
+<link rel="stylesheet" href="style/style.css" />
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+<div>
+  <h1>Real Time Products</h1>
+  <div class="contenedor">
+    <div id="contenedorProducts">
+
+    </div>
+  </div>
+
+   {{#if data.hasPrevPage}}
+  <button><a href={{data.prevLink}}>Pagina Previa</a></button>
+
+  {{/if}}
+   {{#if data.hasNextPage}}
+  <button><a href={{data.nextLink}}>Pagina Siguiente</a></button>
+
+  {{/if}}
+
+  <div class="contenedorForm">
+    
+    <form id="formulario" >
+
+      <h2>Agregar un producto</h2>
+
+
+    <div class="sectores">
+      <div class="sector">
+
+     
+      <h3>Ingrese el titulo</h3>
+      <input name="title" type="text" id="inputData" placeholder="Titulo" />
+      <h3>Ingrese la descripción</h3>
+      <input
+        name="description"
+        type="text"
+        id="inputData"
+        placeholder="Descripcion"
+      />
+      <h3>Ingrese el precio</h3>
+      <input name="price" type="number" id="inputData" placeholder="Precio" />
+       </div>
+       <div class="sector">
+      <h3>Ingrese el thumbnail</h3>
+      <input name="thumbnail" type="file" />
+      <h3>Ingrese el stock</h3>
+      <input name="stock" type="number" id="inputData" placeholder="Stock" />
+      <h3>Available</h3>
+      <input name="available" type="checkbox" checked />
+      <h3>Ingrese la categoria</h3>
+      <input
+        name="category"
+        type="text"
+        id="inputData"
+        placeholder="Categoria"
+      />
+      </div>
+  </div>
+      <br /><button id="btn-agregar">Agregar Producto</button>
+    </form>
+  </div>
+  
+</div>
+
+<script src="socket.io/socket.io.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="js/index.js"></script>

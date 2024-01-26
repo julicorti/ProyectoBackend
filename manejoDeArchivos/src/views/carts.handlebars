@@ -1,0 +1,22 @@
+<h1>Carrito Id: {{this.id}}</h1> <br>
+<p></p>
+
+  <div class="pagina">
+    <div class="contenedor-prods">
+{{#each products}}
+      <div class="products">
+
+        <p>Title: {{this.product.title}}</p>
+        <p>Id: {{this.product.id}}</p>
+        <p>Description: {{this.product.description}}</p>
+        <p>Status: {{this.product.status}}</p>
+        <p>Price: {{this.product.price}}</p>
+        <p>Category: {{this.product.category}}</p>
+        <p>Code: {{this.product.code}}</p>
+        <p>thunbnail: {{this.product.thunbnail}}</p>
+      </div>
+{{/each}}
+    </div>
+  </div>
+
+

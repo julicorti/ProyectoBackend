@@ -1,0 +1,179 @@
+h1 {
+  text-align: center;
+  font-size: 50px;
+  color: black;
+}
+
+.contenedor {
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.contenedor #contenedorProducts {
+  height: 70vh;
+  width: 100%;
+  gap: 10px;
+  background-color: rgba(43, 137, 199, 0.884);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  overflow-y: scroll;
+}
+.contenedor #contenedorProducts .bordeDelContenido {
+  height: 550px;
+  width: 400px;
+  display: flex;
+  border-radius: 10px;
+  justify-content: center;
+  align-items: center;
+  background-color: aliceblue;
+}
+.contenedor #contenedorProducts .bordeDelContenido .contenidoDelProducto {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 500px;
+  overflow-y: auto;
+  width: 350px;
+  gap: 10px;
+  border-radius: 10px;
+  background-color: rgb(77, 146, 179);
+  flex-direction: column;
+}
+.contenedor #contenedorProducts .bordeDelContenido .contenidoDelProducto .cont {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.contenedor #contenedorProducts .bordeDelContenido .contenidoDelProducto .cont #title {
+  text-align: center;
+  font-size: 30px;
+}
+.contenedor #contenedorProducts .bordeDelContenido .contenidoDelProducto .cont #btn-delete {
+  color: white;
+  background-color: red;
+  height: 30px;
+  border-radius: 50%;
+  width: 40px;
+}
+.contenedor #contenedorProducts .img {
+  width: 200px;
+}
+
+.contenedorForm {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(82, 67, 88);
+}
+.contenedorForm #formulario {
+  width: 1000px;
+  font-family: Poppins, sans-serif;
+  height: 800px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 10px;
+  background-color: rgb(255, 255, 255);
+  transition: all 1s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  border-right: 20px solid rgba(70, 72, 75, 0.3098039216);
+}
+.contenedorForm #formulario #btn-agregar {
+  font-size: 20px;
+  width: 200px;
+  height: 50px;
+  border-radius: 10px;
+  background-color: rgb(0, 0, 0);
+  color: white;
+  transition: all 400ms ease;
+}
+.contenedorForm #formulario #btn-agregar:hover {
+  box-shadow: 5px 5px 20px gray;
+  transform: translateY(-3%);
+}
+.contenedorForm #formulario h2 {
+  font-size: 40px;
+}
+.contenedorForm #formulario input {
+  padding-left: 10px;
+  height: 40px;
+  width: 260px;
+  border-radius: 5px;
+}
+.contenedorForm #formulario .sectores {
+  width: 1000px;
+  height: 500px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.contenedorForm #formulario .sectores h3 {
+  font-size: 25px;
+}
+.contenedorForm #formulario .sectores .sector {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+  height: 500px;
+  width: 400px;
+}
+
+.pagina {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.pagina .contenedor-prods {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  flex-direction: row;
+  width: 20%;
+  gap: 10px;
+}
+.pagina .contenedor-prods .products {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 2px;
+  border: solid 1px black;
+  width: 500px;
+  background-color: rgba(30, 145, 199, 0.621);
+  height: 300px;
+  border-radius: 10px;
+  font-family: Poppins, sans-serif;
+}
+.pagina .contenedor-prods .products h1 {
+  font-size: 30px;
+}
+.pagina .contenedor-prods .products button {
+  border-radius: 5px;
+  border-color: none;
+  color: white;
+  height: 50px;
+  width: 120px;
+  background-color: rgba(109, 112, 200, 0.588);
+  font-size: 15px;
+}
+
+* {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,37 @@
+<h1>Productos </h1> <br>
+<h2>Bienvenido/a {{first_name}} {{last_name}}</h2>
+<h4>Datos:</h4>
+<h3>Rol: {{rol}}</h3>
+<h3>Edad: {{age}}</h3>
+<button id="logoutBtn" type="button">Cerrar sesion</button>
+<div class="pagina">
+<div class="contenedor-prods">
+{{#each payload}}
+
+  
+  <div class="products">
+    <h1>Title: {{this.title}}</h1>
+ 
+    <p>Id: {{this._id}}</p>
+    
+    <p>Description: {{this.description}}</p>
+    <p>Price: {{this.price}}</p>
+    <p>Status: {{this.status}}</p>
+    <p>Code: {{this.code}}</p>
+    <p>Stock: {{this.stock}}</p>
+    <button class="buttonAdd" id="{{this._id}}">Agregar al carrito</button>
+  </div>
+{{/each}}
+  </div>
+  </div>
+
+{{#if hasPrevPage}}
+    <button><a href="/products?page={{prevPage}}">Anterior</a></button>
+{{/if}}
+
+{{#if hasNextPage}}
+    <button><a href="/products?page={{nextPage}}">Siguiente</a></button>
+{{/if}}
+
+
+<script src="js/products.js"></script> 
