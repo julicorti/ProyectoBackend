@@ -17,6 +17,7 @@ const productSchema = mongoose.Schema({
       enum: ["M", "F"],
       default: "M"
   },
+  "available": Boolean, 
   "thunbnail": String
 })
 productSchema.plugin(mongoosePaginate);

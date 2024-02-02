@@ -1,8 +1,41 @@
-<h2>Login</h2>
+<div class="contenedor-login">
 
-<form action="/api/session/login" method="post">
-    <label >Emai: </label><input type="email" name="email" > <br> <br>
-    <label >Password: </label><input type="password" name="password" > <br> <br>
-    <button type="submit">Iniciar Sesion</button>
-   
-</form>
+  <div class="caja-login">
+    <h2>Login</h2>
+
+    <form action="/api/session/login" method="post">
+      <div class="datos">
+        <div class="datos-2">
+          <label>Email: </label><input type="email" name="email" />
+          <br />
+          <br />
+          <label>Password: </label><input type="password" name="password" />
+     
+    
+             
+        </div>
+       
+      </div>
+    
+      <div class="sectores">
+      <div class="login">
+<button type="submit">Iniciar Sesion</button> 
+      </div>
+      <br>
+        <div class="sector2">
+<button type="button"><a href="/api/session/github"><img src="/img/logo.png" alt="">Entrar con github</a></button>
+        </div>
+        
+     
+        <div class="sector1">
+          
+          
+          <button type="button"><a href="/restore-password">Olvidaste la
+              contraseña?</a></button>
+          <button type="button"><a href="/register">Registrarse</a></button>
+        </div>
+
+      </div>
+    </form>
+  </div>
+</div>

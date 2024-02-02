@@ -1,3 +1,5 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
 h1 {
   text-align: center;
   font-size: 50px;
@@ -171,9 +173,282 @@ h1 {
   font-size: 15px;
 }
 
+.contenedor-login {
+  height: 100vh;
+  width: 100%;
+  background-color: rgb(30, 35, 39);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.contenedor-login .caja-login {
+  border-radius: 10px;
+  height: 500px;
+  width: 400px;
+  display: flex;
+  background-color: rgba(247, 245, 245, 0.825);
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+}
+.contenedor-login .caja-login h2 {
+  color: rgb(58, 87, 88);
+  font-size: 40px;
+}
+.contenedor-login .caja-login img {
+  width: 100px;
+}
+.contenedor-login .caja-login .datos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-size: 15px;
+  height: 200px;
+  width: 100%;
+}
+.contenedor-login .caja-login .datos input {
+  background-color: transparent;
+  height: 20px;
+  width: 60%;
+  padding: 10px;
+  margin-bottom: 16px;
+  border: transparent; /* Borde semi-transparente */
+  outline: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  transition: border-bottom 0.3s ease;
+}
+.contenedor-login .caja-login .datos input:hover {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.5); /* Línea más pronunciada al pasar el cursor */
+}
+.contenedor-login .caja-login .datos .datos-2 {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+}
+.contenedor-login .caja-login .datos .datos-2 input {
+  width: 100%;
+}
+.contenedor-login .caja-login .sectores {
+  width: 400px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.contenedor-login .caja-login .sectores .login {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.contenedor-login .caja-login .sectores .login button {
+  height: 40px;
+  width: 200px;
+  border-radius: 5px;
+  font-size: 20px;
+  border: none;
+  cursor: pointer;
+  transition: all 400ms ease;
+}
+.contenedor-login .caja-login .sectores .login button:hover {
+  box-shadow: 5px 5px 20px gray;
+  transform: translateY(-3%);
+}
+.contenedor-login .caja-login .sectores .sector1 {
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.contenedor-login .caja-login .sectores .sector1 button {
+  border-radius: 5px;
+  height: 20px;
+  width: 150px;
+  font-size: 10px;
+  background-color: transparent;
+  border: none;
+}
+.contenedor-login .caja-login .sectores .sector1 a {
+  color: black;
+}
+.contenedor-login .caja-login .sectores .sector2 {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.contenedor-login .caja-login .sectores .sector2 button {
+  background-color: #1C2128;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  text-align: center;
+  width: 200px;
+  height: 50px;
+  border-radius: 5px;
+  border: 2px solid #444C56;
+}
+.contenedor-login .caja-login .sectores .sector2 button a {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  color: white;
+  font-size: 15px;
+}
+.contenedor-login .caja-login .sectores .sector2 button img {
+  width: 15%;
+  filter: invert(1);
+}
+
+.contenedor-register {
+  height: 100vh;
+  width: 100%;
+  background-color: #141a22;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.contenedor-register .caja-register {
+  height: 500px;
+  width: 400px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: rgb(255, 255, 255);
+  flex-direction: column;
+  border-radius: 7px;
+}
+.contenedor-register .caja-register h2 {
+  color: #1e446a;
+  font-size: 40px;
+}
+.contenedor-register .caja-register input {
+  width: 100%;
+  height: 20px;
+  margin-bottom: 16px;
+  border: transparent;
+  outline: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+.contenedor-register .caja-register form {
+  font-size: 10px;
+}
+.contenedor-register .caja-register label {
+  font-family: "Poppins", sans-serif;
+  font-size: 15px;
+}
+.contenedor-register .caja-register .boton-caja {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 90px;
+  flex-direction: column;
+}
+.contenedor-register .caja-register .boton-caja .login-btn {
+  background-color: white;
+}
+.contenedor-register .caja-register .boton-caja .login-btn a {
+  color: black;
+}
+.contenedor-register .caja-register .boton-caja button {
+  height: 30px;
+  width: 200px;
+  border-radius: 10px;
+  border: none;
+  background-color: #2B65F7;
+  cursor: pointer;
+  color: white;
+}
+
+.fail-contenedor {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 90.7vh;
+  width: 100%;
+  flex-direction: column;
+  background-color: #1f2923;
+}
+.fail-contenedor .caja-mensaje {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+  height: 300px;
+  width: 500px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 10px;
+}
+.fail-contenedor .caja-mensaje img {
+  width: 100px;
+}
+.fail-contenedor .caja-mensaje h2 {
+  font-size: 40px;
+}
+.fail-contenedor button {
+  width: 300px;
+  height: 50px;
+  font-size: 25px;
+  border-radius: 10px;
+  border: none;
+  background-color: white;
+}
+.fail-contenedor button a {
+  color: black;
+}
+
+.contenedor-cambiarContra {
+  height: 100vh;
+  background-color: #F7F7F7;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+}
+.contenedor-cambiarContra .caja-contraseña {
+  background-color: #FFFFFF;
+  border: #F8F8F8;
+  height: 450px;
+  width: 600px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: 10px 10px 11px -11px rgba(0, 0, 0, 0.75);
+}
+.contenedor-cambiarContra .caja-contraseña h2 {
+  color: #7A91E8;
+  font-size: 30px;
+}
+.contenedor-cambiarContra .caja-contraseña input {
+  width: 100%;
+  margin-bottom: 16px;
+  border: transparent;
+  outline: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+.contenedor-cambiarContra .caja-contraseña .boton-sector {
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.contenedor-cambiarContra .caja-contraseña .boton-sector button {
+  border-radius: 10px;
+  background-color: #7A91E8;
+  height: 40px;
+  width: 200px;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
 * {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-family: "Poppins", sans-serif;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  text-decoration: none;
 }/*# sourceMappingURL=style.css.map */

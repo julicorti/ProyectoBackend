@@ -14,7 +14,8 @@ import { productModel } from "../dao/models/products.model.js";
 import { ProductMongoManager } from "../dao/ManagerDB/productMongo.js";
 import viewsRouters from "./routes/views.routes.js";
 import sessionRouter from "./routes/session.routes.js";
-
+import passport from "passport";
+import initializePassport from "./config/passport.config.js";
 const PORT = 8080;
 const app = express();
 app.use(express.json())
@@ -43,9 +44,11 @@ app.use(session({
   saveUninitialized: true
 
 }));
-
-
-
+//passport config//
+initializePassport();
+app.use(passport.initialize());
+app.use(passport.session());
+////////////////////
 app.get('/', (req, res) =>{
   res.render('index');
 })

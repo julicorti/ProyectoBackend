@@ -1,9 +1,15 @@
 @import "./realTimeProducts/realTimeProducts";
 @import "./realTimeProducts/formulario";
 @import "./products/products";
+@import "./login/login";
+@import "./register/register";
+@import "./register/fail";
+@import "./contraseña/cambiar";
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 *{
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: "Poppins", sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    text-decoration: none;
 }

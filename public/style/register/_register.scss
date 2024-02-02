@@ -1,0 +1,64 @@
+.contenedor-register{
+    height: 100vh;
+    width: 100%;
+    background-color: #141a22;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .caja-register{
+     
+        height: 500px;
+        width: 400px;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        background-color: rgb(255, 255, 255);
+        flex-direction: column;
+        border-radius: 7px;
+        h2{
+            color: #1e446a;
+            font-size: 40px;
+        }
+        input{
+            width: 100%;
+            height: 20px;
+         
+            margin-bottom: 16px;
+        border: transparent;
+        outline: none;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+        }
+        form{
+            font-size: 10px;
+        }
+        label{
+           font-family:"Poppins", sans-serif;
+            font-size: 15px;
+        }
+        .boton-caja{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height:90px;
+            flex-direction: column;
+            .login-btn{
+                a{
+                    color: black;
+                }
+                background-color: white;
+              
+            }
+            button{
+                height: 30px;
+                width: 200px;
+                border-radius: 10px;
+                border:  none;
+                background-color: #2B65F7;
+                cursor: pointer;
+                color: white;
+            }
+        }
+    }
+}

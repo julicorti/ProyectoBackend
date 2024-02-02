@@ -5,7 +5,7 @@ export class Producto {
     this.title = title;
     this.description = description;
     this.price = price;
-    this.code = code;
+    this.code = Math.floor(Math.random() * 10) + 1;
     this.stock = stock;
     this.status = status;
     this.category = category;
@@ -47,10 +47,14 @@ export class ProductMongoManager {
 
   async addProduct(producto) {
     try {
+
       let prod = []
       //Validacion de los campos
-      const validacion = !producto.title || !producto.description || !producto.price || !producto.code || !producto.stock || !producto.status || !producto.category ? false : true;
+ 
+      producto.code = Math.floor(Math.random() * 999) ;
+      const validacion =  !producto.title || !producto.description || !producto.price  || !producto.stock || !producto.status || !producto.category ? false : true;
       if (!validacion)
+     
         return {message: "ERROR" , rdo: "Faltan datos en el producto a ingresar!"}
 
       const resultado = await this.getProducts();
