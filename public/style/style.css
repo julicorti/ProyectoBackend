@@ -445,6 +445,65 @@ h1 {
   cursor: pointer;
 }
 
+.page-chat {
+  height: 100vh;
+  background-color: rgb(51, 95, 133);
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+}
+.page-chat h1 {
+  color: white;
+  font-size: 70px;
+}
+.page-chat .box {
+  height: 600px;
+  width: 60vw;
+  background-color: aliceblue;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  align-items: center;
+  border-radius: 5px;
+  flex-direction: row;
+  box-shadow: -3px 1px 22px 7px rgba(194, 194, 194, 0.68);
+}
+.page-chat .box .entrada {
+  background-color: rgb(198, 198, 198);
+  height: 500px;
+  width: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  flex-direction: column;
+}
+.page-chat .box .entrada h2 {
+  font-size: 30px;
+}
+.page-chat .box .entrada #inputData {
+  margin-top: 50px;
+  width: 70%;
+  height: 30px;
+}
+.page-chat .box .salida {
+  background-color: rgb(34, 24, 78);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 500px;
+  flex-wrap: wrap;
+  border-radius: 10px;
+  width: 400px;
+  color: white;
+  font-size: 25px;
+  overflow-y: scroll;
+}
+.page-chat .box .salida #outputData {
+  padding-left: 10px;
+}
+
 * {
   font-family: "Poppins", sans-serif;
   margin: 0;
