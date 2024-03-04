@@ -1,16 +1,19 @@
 import dotenv from 'dotenv';
 
 export const getVariables = (options) => {
+
     const enviroment = options.opts().mode;
 
     dotenv.config({
-        path: enviroment === 'production' ? './.env.production' : './.env.development'
+        path: enviroment === 'production' ? './src/.env.production' : './src/.env.development'
+        
     });
 
     return {
         port: process.env.PORT,
         mongoUrl: process.env.MONGO_URL,
-        adminName: process.env.ADMIN_NAME,
-        adminPassword: process.env.ADMIN_PASSWORD
+        clientID: process.env.CLIENT_ID,
+        clientSecret: process.env.CLIENT_SECRET
     }
+    
 }

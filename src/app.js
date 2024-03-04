@@ -18,7 +18,8 @@ import passport from "passport";
 
 import initializePassport from "./config/passport.config.js";
 
- const PORT = 8080; 
+
+const PORT = 8080;  
 const app = express();
 
 
@@ -61,6 +62,7 @@ const productMongoManager = new ProductMongoManager();
 
 
 
+
 /* Routes */
 app.use("/api/products", productsRouter);
 app.use("/api/carts", cartsRouter);
@@ -71,9 +73,14 @@ app.use('/api/session', sessionRouter);
 app.use("/chat", chatRouter);
 mongoose.connect("mongodb+srv://admin:admin@julieta.8xkj6p9.mongodb.net/ecommerce?retryWrites=true&w=majority");
 
+
+
+
+
+
  const httpServer = app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`);
-});
+}); 
  
 const io = new Server(httpServer);
 
@@ -134,4 +141,4 @@ io.on('connect', async socket =>{
         io.emit('newConnection', 'Un nuevo usuario se conecto');
         socket.broadcast.emit('notification', user);
     })
-});
+}); 

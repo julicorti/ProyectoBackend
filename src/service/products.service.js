@@ -13,6 +13,7 @@ class Products {
         const products = new ProductMongoManager()
 
         const resultado = await products.getProductById(pId)
+        return resultado;
     }
     async updateProduct(id, updateProd) {
         const products = new ProductMongoManager();
