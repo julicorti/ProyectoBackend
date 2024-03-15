@@ -10,3 +10,11 @@ export const checkExistingUser = (req, res, next) =>{
     }
     next()
 }
+export const authorization = (role) => {
+    return async (req, res, next) => {
+      if(req.session?.user?.rol !== role){
+        return res.status(403).send({error: 'No permissions'});
+      }
+      next();
+    }
+  }

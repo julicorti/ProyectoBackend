@@ -23,7 +23,8 @@ class Carts {
         }
     }
     async getCartId(cId) {
-        const cartById = await CartMongoManager.getCartById(cId);
+        const carts = new CartMongoManager();
+        const cartById = await carts.getCartById(cId);
         return cartById;
     }
     async addProductCart(cId, pId, newQuantity) {
@@ -35,6 +36,7 @@ class Carts {
 
     }
     async deleteCartById(cId) {
+        const carts = new CartMongoManager();
         const deleted = await carts.deleteAllProductsInCart(cId);
         return deleted
     }

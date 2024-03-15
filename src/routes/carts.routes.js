@@ -12,7 +12,7 @@ router.delete('/:cId', cartsController.deleteCartById);
 router.delete('/:cId/products/:pId', cartsController.deleteProductInCart);
 router.put('/:cId', cartsController.updateCartById);
 router.put('/:cId/products/:pId', cartsController.updateProductInCart);
-
+router.get('/:cId/purchase', cartsController.finalizar);
 export default router;
 
 

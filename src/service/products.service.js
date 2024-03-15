@@ -15,6 +15,12 @@ class Products {
         const resultado = await products.getProductById(pId)
         return resultado;
     }
+    async addProduct(){
+        const products = new ProductMongoManager();
+        const newProduct = new ProductDTO(req.body);
+        const resultado = await products.addProduct(newProduct);
+        return resultado;
+    }
     async updateProduct(id, updateProd) {
         const products = new ProductMongoManager();
 
@@ -26,5 +32,6 @@ class Products {
         const productDeleted = await products.deleteProduct({ _id: pId });
         return productDeleted;
     }
+ 
 }
 export default new Products();

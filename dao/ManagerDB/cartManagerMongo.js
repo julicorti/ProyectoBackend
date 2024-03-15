@@ -55,16 +55,21 @@ export class CartMongoManager {
 
   async addProductsInCart(cId, pId, quantity) {
     try {
+      
       const cart = await CartModel.findOne({_id: cId});
+      
       if(cart){
         const existingProducts = cart.products.find(product => product.product.toString() === pId);
         if(existingProducts){
           existingProducts.quantity += quantity;
         }
         else{
+         
           cart.products.push({product: pId, quantity});
         }
+        console.log(cart)
         await cart.save();
+       
         return true;
       }
       else{

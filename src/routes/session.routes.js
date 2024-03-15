@@ -2,6 +2,7 @@ import { Router } from "express";
 import { userModel } from "../../dao/models/user.model.js";
 import { createHash, isValidPassword } from "../utils/bcrypt.js";
 import passport from "passport";
+import { getCurrentUser } from "../controllers/session.controller.js";
 const sessionRouter = Router();
 sessionRouter.post(
   "/register",
@@ -60,11 +61,14 @@ sessionRouter.post("/restore-password", async (req, res) => {
 sessionRouter.get(
   "/github",
   passport.authenticate("github", { scope: ["user:email"] }),
-  (req, res) => {}
+  (req, res) => {
+    
+  }
 );
 sessionRouter.get('/githubcallback', passport.authenticate('github', {failureRedirect: '/login'}),
  (req, res)=>{
     req.session.user = req.user;
     res.redirect('/products');
 })
+sessionRouter.get("/current", getCurrentUser);
 export default sessionRouter;
