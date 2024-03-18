@@ -3,6 +3,9 @@ import CartModel from "../../dao/models/carts.model.js";
 import productsService from "../service/products.service.js";
 import { CartMongoManager } from "../../dao/ManagerDB/cartManagerMongo.js";
 import Cart from "../service/cart.service.js";
+import ticketService from "../service/ticket.service.js";
+import { userModel } from "../../dao/models/user.model.js";
+import cartService from "../service/cart.service.js";
 class Carts {
   async getCarts(req, res) {
     try {
@@ -47,7 +50,10 @@ class Carts {
   }
 
   async addCart(req, res) {
-    const cartAdded = new CartMongoManager({ products: [] });
+    const { user } = req.body;
+ 
+/*     const user = await userModel.find({_id: uId}) */
+    const cartAdded = await CartModel.create({ products: [] , user: user});
     if (!cartAdded) {
       return res.status(400).send({ message: "error: cart not added" });
     }
@@ -107,29 +113,44 @@ class Carts {
     }
   }
   async finalizar(req, res) {
-     const { cId } = req.params;
+    const { cId } = req.params;
     const cart = await Cart.getCartId(cId);
-    cart.rdo.products.map(async (p) => {
-      console.log(p);
-      const prod = await productsService.getProductById(p.product._id);
+    let hayStock = true;
+    let total = 0;
+    let idNoProcesadas = [];
+    for(const p of cart.rdo.products){
 
-      console.log(prod.rdo.stock - p.quantity);
-      if (prod.rdo.stock - p.quantity >= 0) {
-        return p;
-      }
-      else{
-        const vaciar = new CartMongoManager();
-        const borrar = await vaciar.deleteAllProductsInCart();
-        return borrar;
-      }
-    });
-    res.send(cart) ;
+   
+        
+        const prod = await productsService.getProductById(p.product._id);
+        total = total + prod.rdo.price * p.quantity;
+        
+        
+        if (prod.rdo.stock - p.quantity < 0) {
+          idNoProcesadas.push(p.product._id);
+          hayStock = false;
+        }
+        else{
+          productsService.updateProduct(p.product._id, {stock: prod.rdo.stock - p.quantity})
+        }
+      
+      };
+    console.log(total)
+    if(hayStock){
+
+      ticketService.createTicket({amount: total,  purchaser: cart.rdo.user})
     
+      const vaciar = new CartMongoManager();
+      await vaciar.deleteAllProductsInCart(cId);
+     
+    }
+    else{
+      
+      return res.send("Error no hay stock" + ", Las ids no procesadas son:  " +  idNoProcesadas.join(", "))
+      
+    }
+    res.send(cart);
   }
 }
-
-
-
-
 
 export default new Carts();
