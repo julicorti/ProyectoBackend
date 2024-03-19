@@ -6,6 +6,8 @@ import Cart from "../service/cart.service.js";
 import ticketService from "../service/ticket.service.js";
 import { userModel } from "../../dao/models/user.model.js";
 import cartService from "../service/cart.service.js";
+import CustomErrors from "../service/errors/CustomError.js";
+import ErrorEnum from "../service/errors/error.enum.js";
 class Carts {
   async getCarts(req, res) {
     try {
@@ -45,7 +47,7 @@ class Carts {
       }
       res.status(400).json({ message: "could not add product" });
     } catch (err) {
-      res.status(400).send({ err });
+      throw new CustomErrors(customErrors.ADD_TO_CART_ERROR, 'Error adding product to cart.');
     }
   }
 
@@ -145,8 +147,13 @@ class Carts {
      
     }
     else{
-      
-      return res.send("Error no hay stock" + ", Las ids no procesadas son:  " +  idNoProcesadas.join(", "))
+      CustomErrors.createError({
+        name: 'InvalidProductError',
+        cause: 'Stock is not a number',
+        message: `Error no hay stock, las ids no procesadas son:   ${idNoProcesadas.join(", ")}`,
+        code: ErrorEnum.INSUFFICIENT_STOCK
+      })
+     
       
     }
     res.send(cart);

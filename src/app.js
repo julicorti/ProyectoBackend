@@ -17,6 +17,7 @@ import sessionRouter from "./routes/session.routes.js";
 import passport from "passport";
 
 import initializePassport from "./config/passport.config.js";
+import { errorHandler } from "./middlewares/error.js";
 
 
 const PORT = 8080;  
@@ -71,6 +72,7 @@ app.use('/', viewsRouters)
 
 app.use('/api/session', sessionRouter);
 app.use("/chat", chatRouter);
+app.use(errorHandler)
 mongoose.connect("mongodb+srv://admin:admin@julieta.8xkj6p9.mongodb.net/ecommerce?retryWrites=true&w=majority");
 
 

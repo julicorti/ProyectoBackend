@@ -3,13 +3,12 @@
   "version": "1.0.0",
   "main": "process.js",
   "type": "module",
-  "scripts": {
-     
-  },
+  "scripts": {},
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "faker": "^5.5.3",
     "bcrypt": "^5.1.1",
     "body-parser": "^1.20.2",
     "commander": "^12.0.0",

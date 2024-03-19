@@ -1,5 +1,6 @@
 class ProductDTO{
-    constructor(){
+    constructor(product){
+     
         this.title = product.title,
         this.description = product.description, 
         this.price = product.price,
@@ -9,5 +10,6 @@ class ProductDTO{
         this.category = product.category,
         this.thumbnail = product.thumbnail
     }
+
 }
 export default ProductDTO;

@@ -1,6 +1,5 @@
 import { ProductMongoManager } from "../../dao/ManagerDB/productMongo.js";
-
-
+import ProductDTO from "../../dao/dtos/product.dto.js";
 class Products {
     async getProducts(limit, page, query, sort) {
 
@@ -32,6 +31,10 @@ class Products {
         const productDeleted = await products.deleteProduct({ _id: pId });
         return productDeleted;
     }
+  
+    
+  
+    
  
 }
 export default new Products();
