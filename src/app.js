@@ -18,6 +18,7 @@ import passport from "passport";
 
 import initializePassport from "./config/passport.config.js";
 import { errorHandler } from "./middlewares/error.js";
+import { addLogger } from "./utils/logger.js";
 
 
 const PORT = 8080;  
@@ -35,6 +36,16 @@ const hbs = handlebars.create({
   }
 });
 
+
+app.use(addLogger)
+app.get('/PruebaHTTP', (req, res) =>{
+  res.send({message: 'PruebaHTTP!!'});
+})
+app.get('/Error', (req, res) =>{
+  req.logger.warn('Esto es un warning');
+  req.logger.error('Esto es un error');
+  res.send({message: 'Error de prueba'})
+})
 app.engine('handlebars',hbs.engine) 
 app.set('views','src/views')
 app.set('view engine', 'handlebars')

@@ -1,11 +1,14 @@
 .pagina {
   width: 100%;
-
+background-color: aquamarine;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   .contenedor-prods {
-   
+   height: 50vh;
+   width: 50vw;
+   background-color: bisque;
     display: flex;
     justify-content: center;
     align-items: center;
