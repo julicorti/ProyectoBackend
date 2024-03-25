@@ -15,7 +15,7 @@ import { ProductMongoManager } from "../dao/ManagerDB/productMongo.js";
 import viewsRouters from "./routes/views.routes.js";
 import sessionRouter from "./routes/session.routes.js";
 import passport from "passport";
-
+import { Logger } from "winston";
 import initializePassport from "./config/passport.config.js";
 import { errorHandler } from "./middlewares/error.js";
 import { addLogger } from "./utils/logger.js";
@@ -41,11 +41,16 @@ app.use(addLogger)
 app.get('/PruebaHTTP', (req, res) =>{
   res.send({message: 'PruebaHTTP!!'});
 })
-app.get('/Error', (req, res) =>{
-  req.logger.warn('Esto es un warning');
+app.get('/loggerTest', (req, res) => {
+  req.logger.debug('Esto es un debug');
+  req.logger.http('Hola soy un http');
+  req.logger.info('Hola soy un log de info');
+  req.logger.warning('Esto es un warning');
   req.logger.error('Esto es un error');
-  res.send({message: 'Error de prueba'})
-})
+  req.logger.fatal('Esto es un error FATAL');
+ 
+  res.send({message: 'Error de prueba!'});
+});
 app.engine('handlebars',hbs.engine) 
 app.set('views','src/views')
 app.set('view engine', 'handlebars')
