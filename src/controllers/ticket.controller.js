@@ -1,5 +1,7 @@
 import { ticketModel } from "../../dao/models/ticket.model.js";
 import ticketService from "../service/ticket.service.js";
+
+
 class Ticket{
     async createTicket(req, res){
         try {
@@ -9,6 +11,7 @@ class Ticket{
             res.status(201).json(savedTicket);
         } catch (error) {
             console.error('Error al crear el ticket:', error);
+            req.logger.error('Error al crear el ticket:', error);
             res.status(500).json({ message: 'Error al crear el ticket' });
         }
     }
@@ -21,7 +24,7 @@ class Ticket{
             }
             res.status(200).json(ticket);
         } catch (error) {
-            console.error('Error al obtener el ticket:', error);
+            req.logger.error('Error al obtener el ticket:', error);
             res.status(500).json({ message: 'Error al obtener el ticket' });
         }
     }

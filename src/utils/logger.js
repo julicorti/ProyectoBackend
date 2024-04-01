@@ -23,14 +23,14 @@ const logger = winston.createLogger({
     levels: customLevelOptions.levels,
     transports: [
         new winston.transports.Console({
-            level: 'fatal',
+            level: process.env.NODE_ENV === 'production' ? 'info' : 'debug', 
             format: winston.format.combine(
                 winston.format.colorize({colors: customLevelOptions.colors}),
                 winston.format.simple()
             )
         }),
         new winston.transports.File({
-            level: 'warning',
+            level: 'info', 
             filename: './customLog.log',
             format: winston.format.simple()
         })

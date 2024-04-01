@@ -4,7 +4,7 @@ import { generateProducts } from "../routes/utils.js";
 import CustomErrors from "../service/errors/CustomError.js";
 import ErrorEnum from "../service/errors/error.enum.js";
 import Product from "../service/products.service.js";
-
+import { addLogger } from "../utils/logger.js";
 class Products {
   async getProducts(req, res) {
     try {
@@ -17,6 +17,7 @@ class Products {
       }
     } catch (err) {
       console.log({ err });
+      req.logger.error('Error al obtener los productos:', err);
       CustomErrors.createError({
         name: 'GetProductError',
         cause: 'Database error',
@@ -37,6 +38,7 @@ class Products {
       }
       res.status(400).json(resultado);
     } catch (err) {
+      req.logger.error('Error al obtener el producto por ID:', err);
       CustomErrors.createError({
         name: 'GetProductByIdError',
         cause: 'Database error',
@@ -56,6 +58,7 @@ class Products {
       }
       res.status(400).json(resultado);
     } catch (err) {
+      req.logger.error('Error al agregar producto:', err);
       CustomErrors.createError({
         name: 'CreateProductError',
         cause: 'Database error',
@@ -75,6 +78,7 @@ class Products {
 
       res.status(400).json(updateResult);
     } catch (error) {
+      req.logger.error('Error al actualizar producto:', error);
       res.status(400).json({ menssage: "err" });
     }
   }
@@ -89,6 +93,7 @@ class Products {
 
       return res.status(404).json(productDeleted.rdo);
     } catch (err) {
+      req.logger.error('Error al eliminar producto:', err);
       res.status(400).json({ menssage: err });
     }
   }
@@ -98,7 +103,7 @@ class Products {
       res.send("Se almaceno con exito!")
       res.json(productos);
   } catch (error) {
-     /*  console.error('Error al almacenar los productos:', error); */
+    req.logger.error('Error al generar producto:', error);
       CustomErrors.createError({
         name: 'CreateProductError',
         cause: 'Database error',

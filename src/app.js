@@ -24,7 +24,7 @@ import { addLogger } from "./utils/logger.js";
 const PORT = 8080;  
 const app = express();
 
-
+app.use(addLogger)
 app.use(express.json())
 app.use(express.urlencoded({ extended: true}))
 app.use(express.static('public'))
