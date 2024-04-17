@@ -1,0 +1,129 @@
+paths:
+  /api/products:
+    get:
+      summary: Obtiene todos los productos
+      tags:
+        - Products
+      responses:
+        "200":
+          description: Los productos se han obtenido satisfactoriamente
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#components/schemas/products"
+        "400":
+          description: Los producctos no se han obtenido debido a un error
+
+  /api/products/{uid}:
+    get:
+      summary: Obtiene un producto en particular por su Id
+      tags:
+        - Products
+      parameters:
+        - name: uid
+          in: path
+          description: Id del producto
+          schema:
+            type: String
+      responses:
+        "200":
+          description: El producto se ha encontrado correctamente
+          content:
+            application/json:
+              schema:
+                $ref: "#components/schemas/products"
+        "500":
+          description: Error de servidor
+
+    put:
+      summary: Actualiza el producto a partir de su Id
+      tags:
+        - Products
+      parameters:
+        - name: uid
+          in: path
+          description: Id del producto que se desea Actualizar
+          schema:
+            type: String
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#components/requestBodies/updateProduct"
+
+components:
+  schemas:
+    products:
+      type: object
+      properties:
+        _id:
+          type: String
+          description: Id autogenerado por mongo
+        title:
+          type: String
+          description: Nombre ded producto
+        description:
+          type: String
+          description: Descripcion del producto
+        price:
+          type: Number
+          description: Precio del producto
+        code:
+          type: String
+          description: Codigo del producto
+        category:
+          type: String
+          description: Categoria de los productos
+        available:
+          type: Boolean
+          description: Si el producto esta disponible
+        status: 
+        type: Boolean
+        description: El estado del producto
+      example:
+        _id: ObjectId("65f8d2449a1e1cbe4fd9e22a")
+        title: Remera
+        description: negro
+        price: 50
+        code: fesfgr
+      
+        status: true
+        category: M
+  requestBodies:
+    updateUser:
+      type: object
+      properties:
+        title:
+          type: String
+          description: Nombre del producto
+        description:
+          type: String
+          description: Descripcion del producto
+        price:
+          type: Number
+          description: Precion del producto
+        code:
+          type: String
+          description: Codigo del producto
+       
+         status: 
+        type: Boolean
+        description: Estado del producto
+        Category: 
+        type: String
+        description: Categoria de los productos
+        available: 
+        type: Boolean
+        description: Si el producto esta disponible
+        
+      example:
+       _id: ObjectId("65f8d2449a1e1cbe4fd9e22a")
+        title: Remera
+        description: negro
+        price: 50
+        code: fesfgr
+        status: true
+        category: M
