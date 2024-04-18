@@ -53,6 +53,22 @@ paths:
           application/json:
             schema:
               $ref: "#components/requestBodies/updateProduct"
+    post: 
+       
+      summary: Agrega un nuevo producto
+      tags:
+        - Products
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/requestBodies/addProduct"
+      responses:
+        "201":
+          description: Producto agregado exitosamente
+        "400":
+          description: Solicitud incorrecta
 
 components:
   schemas:
@@ -81,19 +97,20 @@ components:
           type: Boolean
           description: Si el producto esta disponible
         status: 
-        type: Boolean
-        description: El estado del producto
+          type: Boolean
+          description: El estado del producto
       example:
         _id: ObjectId("65f8d2449a1e1cbe4fd9e22a")
         title: Remera
         description: negro
         price: 50
         code: fesfgr
-      
         status: true
         category: M
+
+
   requestBodies:
-    updateUser:
+    updateProduct:
       type: object
       properties:
         title:
@@ -104,26 +121,59 @@ components:
           description: Descripcion del producto
         price:
           type: Number
-          description: Precion del producto
+          description: Precio del producto
         code:
           type: String
           description: Codigo del producto
-       
-         status: 
-        type: Boolean
-        description: Estado del producto
-        Category: 
-        type: String
-        description: Categoria de los productos
+        status: 
+          type: Boolean
+          description: Estado del producto
+        category: 
+          type: String
+          description: Categoria de los productos
         available: 
-        type: Boolean
-        description: Si el producto esta disponible
-        
+          type: Boolean
+          description: Si el producto esta disponible
       example:
-       _id: ObjectId("65f8d2449a1e1cbe4fd9e22a")
         title: Remera
         description: negro
         price: 50
         code: fesfgr
         status: true
         category: M
+        available: true
+
+
+  requestBodies:
+     addProduct:
+    type: object
+    properties:
+      title:
+        type: string
+        description: Nombre del producto
+      description:
+        type: string
+        description: Descripción del producto
+      price:
+        type: number
+        description: Precio del producto
+      code:
+        type: string
+        description: Código del producto
+      status: 
+        type: boolean
+        description: Estado del producto
+      category: 
+        type: string
+        description: Categoría de los productos
+      available: 
+        type: boolean
+        description: Si el producto está disponible
+    example:
+      title: Short
+      description: Gris
+      price: 50
+      code: gegds
+      status: true
+      category: F
+      available: true
