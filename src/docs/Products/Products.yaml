@@ -16,7 +16,7 @@ paths:
         "400":
           description: Los producctos no se han obtenido debido a un error
 
-  /api/products/{uid}:
+  /api/products/{pid}:
     get:
       summary: Obtiene un producto en particular por su Id
       tags:
@@ -53,8 +53,10 @@ paths:
           application/json:
             schema:
               $ref: "#components/requestBodies/updateProduct"
-    post: 
-       
+    
+
+/api/products/addProduct:
+    post:
       summary: Agrega un nuevo producto
       tags:
         - Products
@@ -63,12 +65,46 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/requestBodies/addProduct"
+              $ref: "components/requestBodies/addProduct"
       responses:
-        "201":
-          description: Producto agregado exitosamente
-        "400":
-          description: Solicitud incorrecta
+        "200":
+          description: Producto agregado correctamente
+          content:
+            application/json:
+              schema:
+                $ref: "components/schemas/products"
+        "500":
+          description: Error del servidor al agregar el producto
+
+/api/products/deleteProduct/{pid}:
+   delete:
+      summary: Eliminar productos
+      tags:
+        - Products
+      parameters:
+        - name: pid
+          in: path
+          description: Id del producto
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "components/requestBodies/deleteProduct"
+      responses:
+        "200":
+          description: Producto eliminado correctamente
+          content:
+            application/json:
+              schema:
+                $ref: "components/schemas/products"
+        "500":
+          description: Error del servidor al eliminar el producto
+
+   
+
 
 components:
   schemas:
@@ -144,36 +180,52 @@ components:
         available: true
 
 
-  requestBodies:
-     addProduct:
-    type: object
-    properties:
-      title:
-        type: string
-        description: Nombre del producto
-      description:
-        type: string
-        description: Descripción del producto
-      price:
-        type: number
-        description: Precio del producto
-      code:
-        type: string
-        description: Código del producto
-      status: 
-        type: boolean
-        description: Estado del producto
-      category: 
-        type: string
-        description: Categoría de los productos
-      available: 
-        type: boolean
-        description: Si el producto está disponible
-    example:
-      title: Short
-      description: Gris
-      price: 50
-      code: gegds
-      status: true
-      category: F
-      available: true
+
+  addProduct:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            title:
+              type: string
+              description: Nombre del producto
+            description:
+              type: string
+              description: Descripción del producto
+            price:
+              type: number
+              description: Precio del producto
+            code:
+              type: string
+              description: Código del producto
+            status: 
+              type: boolean
+              description: Estado del producto
+            category: 
+              type: string
+              description: Categoría de los productos
+            available: 
+              type: boolean
+              description: Si el producto está disponible
+        example:
+          title: Remera
+          description: negro
+          price: 50
+          code: fesfgr
+          stock: 50
+          status: true
+          category: M
+          available: true
+
+  deleteProduct:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Mensaje de confirmación de eliminación
+      example:
+        message: Producto eliminado correctamente
+
+
+     
