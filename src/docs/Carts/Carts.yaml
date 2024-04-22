@@ -15,3 +15,73 @@ paths:
                   $ref: "#components/schemas/carts"
         "400":
           description: Los carritos no se han obtenido debido a un error
+
+
+
+
+/api/carts/{cid}:
+    get:
+      summary: Obtiene un carrito en particular por su Id
+      tags:
+        - Carts
+      parameters:
+        - name: cid
+          in: path
+          description: Id del carrito
+          schema:
+            type: String
+      responses:
+        "200":
+          description: El carrito se ha encontrado correctamente
+          content:
+            application/json:
+              schema:
+                $ref: "#components/schemas/carts"
+        "500":
+          description: Error de servidor
+  
+/api/carts/{cid}:
+    put:
+      summary: Actualiza el carrito a partir de su Id
+      tags:
+        - Carts
+      parameters:
+        - name: cid
+          in: path
+          description: Id del carrito que se desea actualizar
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#components/requestBodies/updateCartById"
+
+components:
+  schemas:
+    carts:
+      type: object
+      properties:
+        product:
+          type: string
+          format: uuid
+          description: ID del producto en el carrito
+        quantity:
+          type: integer
+          description: Cantidad del producto en el carrito
+  requestBodies:
+    UpdateCartById:
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              product:
+                type: string
+                format: uuid
+                description: ID del producto en el carrito
+              quantity:
+                type: integer
+                description: Cantidad del producto en el carrito
