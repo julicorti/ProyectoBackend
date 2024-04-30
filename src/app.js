@@ -37,6 +37,7 @@ const hbs = handlebars.create({
   }
 });
 const specs = swaggerJsDoc(swaggerConfiguration);
+console.log(specs)
 app.use('/apidocs', swaggerUiExpress.serve, swaggerUiExpress.setup(specs));
 
 app.use(addLogger)

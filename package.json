@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "main": "process.js",
   "type": "module",
-  "scripts": {},
+  "scripts": {
+    "test": "mocha src/test/products.test.js"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -33,5 +35,10 @@
     "swagger-ui-express": "^5.0.0",
     "winston": "^3.12.0"
   },
-  "description": ""
+  "description": "",
+  "devDependencies": {
+    "chai": "^5.1.0",
+    "mocha": "^10.4.0",
+    "supertest": "^7.0.0"
+  }
 }
