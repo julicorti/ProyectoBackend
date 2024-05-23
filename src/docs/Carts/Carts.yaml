@@ -1,3 +1,8 @@
+openapi: '3.0.1'
+info:
+  title: 'Documentación API'
+  description: 'Es una API de ropa'
+  version: '1.0.0'
 paths: 
   /api/carts:
     get:
@@ -12,14 +17,11 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: "#components/schemas/carts"
+                  $ref: "#/components/schemas/carts"
         "400":
           description: Los carritos no se han obtenido debido a un error
 
-
-
-
-/api/carts/{cid}:
+  /api/carts/{cid}:
     get:
       summary: Obtiene un carrito en particular por su Id
       tags:
@@ -27,20 +29,19 @@ paths:
       parameters:
         - name: cid
           in: path
+          required: true
           description: Id del carrito
           schema:
-            type: String
+            type: string
       responses:
         "200":
           description: El carrito se ha encontrado correctamente
           content:
             application/json:
               schema:
-                $ref: "#components/schemas/carts"
+                $ref: "#/components/schemas/carts"
         "500":
           description: Error de servidor
-  
-/api/carts/{cid}:
     put:
       summary: Actualiza el carrito a partir de su Id
       tags:
@@ -57,7 +58,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#components/requestBodies/updateCartById"
+              $ref: "#/components/requestBodies/UpdateCartById"
+      responses:
+        "200":
+          description: El carrito se ha actualizado correctamente
+        "400":
+          description: Error en la solicitud
+        "500":
+          description: Error de servidor
 
 components:
   schemas:

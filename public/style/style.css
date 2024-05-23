@@ -1,5 +1,9 @@
 @charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Radio+Canada+Big:ital,wght@0,400..700;1,400..700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Radio+Canada+Big:ital,wght@0,400..700;1,400..700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Radio+Canada+Big:ital,wght@0,400..700;1,400..700&family=Roboto+Slab:wght@100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Radio+Canada+Big:ital,wght@0,400..700;1,400..700&family=Roboto+Slab:wght@100..900&display=swap");
 h1 {
   text-align: center;
   font-size: 50px;
@@ -132,16 +136,64 @@ h1 {
 }
 
 .pagina {
+  height: 100vh;
   width: 100%;
-  background-color: aquamarine;
+  background-image: url("../../img/imgC.jpg");
+  -webkit-backdrop-filter: blur(4px);
+          backdrop-filter: blur(4px);
+  background-size: cover;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 }
+.pagina .btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  width: 400px;
+  margin-top: 50px;
+}
+.pagina .btn a {
+  width: 140px;
+  height: 50px;
+  background-color: black;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+}
+.pagina .contenido {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  color: white;
+  width: 600px;
+  height: 200px;
+}
+.pagina .contenido h1 {
+  color: white;
+  font-family: "Radio Canada Big", sans-serif;
+  font-size: 100px;
+  font-weight: 600;
+}
+.pagina .contenido p {
+  font-size: 15px;
+}
+.pagina::before {
+  content: "";
+  inset: 0;
+  position: absolute;
+  z-index: -1;
+  -webkit-backdrop-filter: blur(4px);
+          backdrop-filter: blur(4px);
+}
 .pagina .contenedor-prods {
-  height: 50vh;
-  width: 50vw;
+  height: 100vh;
+  width: 100%;
   background-color: bisque;
   display: flex;
   justify-content: center;
@@ -162,6 +214,8 @@ h1 {
   width: 500px;
   background-color: rgba(30, 145, 199, 0.621);
   height: 300px;
+  gap: 10px;
+  margin-top: 50px;
   border-radius: 10px;
   font-family: Poppins, sans-serif;
 }
@@ -450,63 +504,284 @@ h1 {
   cursor: pointer;
 }
 
-.page-chat {
+.seccion2 {
+  width: 99%;
   height: 100vh;
-  background-color: rgb(51, 95, 133);
+  background-color: rgb(255, 255, 255);
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.seccion2 .cartas {
+  width: 90%;
+  max-width: 300px;
+  padding: 20px;
+  background-color: #ffffff;
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.seccion2 .cartas h1 {
+  font-size: 24px;
+  font-family: "Radio Canada Big", sans-serif;
+  color: black;
+}
+.seccion2 .cartas img {
+  width: 100%;
+  height: 300px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 5px;
+  margin-bottom: 15px;
+}
+.seccion2 .cartas p {
+  font-size: 18px;
+}
+.seccion2 .cartas .cont {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+.seccion2 .cartas button {
+  background-color: black;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.seccion2 .cartas button:hover {
+  background-color: darkgray;
+}
+
+.pagP {
+  height: 100vh;
+  background-color: rgb(251, 251, 251);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.pagP .cajaP {
+  height: 500px;
+  width: 700px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  border-radius: 15px;
+  box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+  flex-direction: column;
+  background-color: rgba(237, 236, 236, 0.614);
+}
+.pagP .cajaP .inicio {
+  width: 100%;
+  display: flex;
+  justify-content: first baseline;
+  flex-direction: column;
+}
+.pagP .cajaP .contenidoP {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: row;
+}
+.pagP .cajaP h1 {
+  color: black;
+  font-size: 50px;
+}
+.pagP .cajaP h2 {
+  padding: 10px;
+  font-size: 18px;
+}
+
+.nav img {
+  border-radius: 50%;
+}
+
+.page-chat {
+  margin-top: 10px;
+  height: 100vh;
+  background-color: #2A2D35;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  flex-direction: column;
+  flex-direction: row;
 }
 .page-chat h1 {
   color: white;
   font-size: 70px;
+  font-family: "Radio Canada Big", sans-serif;
 }
 .page-chat .box {
   height: 600px;
   width: 60vw;
-  background-color: aliceblue;
+  background-color: #1e1f22;
   display: flex;
   justify-content: center;
   gap: 10px;
   align-items: center;
-  border-radius: 5px;
+  border-radius: 15px;
   flex-direction: row;
-  box-shadow: -3px 1px 22px 7px rgba(194, 194, 194, 0.68);
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 }
 .page-chat .box .entrada {
-  background-color: rgb(198, 198, 198);
+  background-color: #2B2D31;
   height: 500px;
   width: 400px;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 10px;
+  border-radius: 5px;
   flex-direction: column;
 }
 .page-chat .box .entrada h2 {
-  font-size: 30px;
+  font-size: 40px;
+  font-family: "Radio Canada Big", sans-serif;
+  color: white;
 }
 .page-chat .box .entrada #inputData {
   margin-top: 50px;
   width: 70%;
   height: 30px;
+  border-radius: 10px;
+  background-color: #1e1f22;
+  border: none;
+  color: gray;
+  outline: none; /* Remove focus outline */
+  box-shadow: none; /* Remove focus box-shadow */
+}
+.page-chat .box .entrada input {
+  outline: none; /* Ensure no outline for all inputs */
+  box-shadow: none; /* Ensure no box-shadow for all inputs */
+}
+.page-chat .box .entrada input:focus {
+  outline: none; /* Remove focus outline for all inputs */
+  box-shadow: none; /* Remove focus box-shadow for all inputs */
 }
 .page-chat .box .salida {
-  background-color: rgb(34, 24, 78);
+  background-color: #2B2D31;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 500px;
   flex-wrap: wrap;
-  border-radius: 10px;
+  border-radius: 5px;
   width: 400px;
-  color: white;
-  font-size: 25px;
+  color: rgb(255, 255, 255);
+  font-size: 18px;
   overflow-y: scroll;
 }
 .page-chat .box .salida #outputData {
   padding-left: 10px;
+}
+
+.paginaC {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: "Roboto Slab", sans-serif;
+  color: #333;
+}
+.paginaC h1 {
+  font-size: 36px;
+  font-family: "Radio Canada Big", sans-serif;
+  margin-bottom: 20px;
+}
+.paginaC .contenedor-prodsC {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.paginaC .product {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: #fff;
+}
+.paginaC .product:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.paginaC .product .product-info {
+  display: flex;
+  align-items: center;
+  flex: 2;
+}
+.paginaC .product .product-info img {
+  width: 80px;
+  height: 80px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  margin-right: 20px;
+  border-radius: 10px;
+}
+.paginaC .product .product-info .details {
+  display: flex;
+  flex-direction: column;
+}
+.paginaC .product .product-info .details p {
+  margin: 0;
+  margin-bottom: 5px;
+}
+.paginaC .product .product-info .details p:last-child {
+  margin-bottom: 0;
+}
+.paginaC .product .product-info .details p.title {
+  font-size: 18px;
+  font-weight: bold;
+}
+.paginaC .product .product-info .details p.sku, .paginaC .product .product-info .details p.stock-status, .paginaC .product .product-info .details p.price, .paginaC .product .product-info .details p.category, .paginaC .product .product-info .details p.code, .paginaC .product .product-info .details p.thumbnail {
+  font-size: 14px;
+  color: #555;
+}
+.paginaC .product .product-info .details p.edit-link {
+  font-size: 12px;
+  color: #007BFF;
+  cursor: pointer;
+}
+.paginaC .product .product-info .details p.edit-link:hover {
+  text-decoration: underline;
+}
+.paginaC .product .product-quantity,
+.paginaC .product .product-total {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  font-size: 16px;
+}
+.paginaC .product .product-quantity input {
+  width: 50px;
+  padding: 5px;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+.paginaC .product .product-total {
+  font-size: 18px;
+  font-weight: bold;
+}
+.paginaC .product .remove-product {
+  cursor: pointer;
+  color: #ff0000;
+  font-size: 20px;
+}
+.paginaC .product .remove-product:hover {
+  color: #cc0000;
 }
 
 * {

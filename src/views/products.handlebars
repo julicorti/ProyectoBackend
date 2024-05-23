@@ -1,37 +1,160 @@
+<head>
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="../../public/style/style.css" />
+</head>
+<nav
+  class="bg-white dark:bg-gray-900 fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600"
+>
+  <div
+    class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4"
+  >
+    <a
+      href="/products"
+      class="flex items-center space-x-3 rtl:space-x-reverse"
+    >
+       <img
+        src="/img/logo.jpg"
+        class="w-10 h-10 bg-gray-500 rounded-full"
+        alt="Logo"
+      />
+      <span
+        class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white"
+      >VogueWear</span>
+    </a>
+    <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+      <button
+        id="logoutBtn"
+        type="button"
+        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+      >Cerrar sesion</button>
+
+      <button
+        data-collapse-toggle="navbar-sticky"
+        type="button"
+        class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+        aria-controls="navbar-sticky"
+        aria-expanded="false"
+      >
+        <span class="sr-only">Open main menu</span>
+        <svg
+          class="w-5 h-5"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 17 14"
+        >
+          <path
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M1 1h15M1 7h15M1 13h15"
+          />
+        </svg>
+      </button>
+    </div>
+    <div
+      class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1"
+      id="navbar-sticky"
+    >
+      <ul
+        class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700"
+      >
+        <li>
+          <a
+            href="#"
+            class="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500"
+            aria-current="page"
+          >Home</a>
+        </li>
+         <li>
+          <a
+            href="/carts/{{cId}}"
+           class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+            aria-current="page"
+          >Carrito</a>
+        </li>
+        <li>
+          <a
+            href="#products2"
+            id="productsBtn2" 
+            class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+          >Productos</a>
+        </li>
+        <li>
+          <a
+            href="/perfil"
+            class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+          >Perfil</a>
+        </li>
+        <li>
+          <a
+            href="/chat"
+            class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+          >Chat</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
 <div class="pagina">
-<button id="logoutBtn" type="button">Cerrar sesion</button>
-<h1>Productos </h1> <br>
+  <div class="contenido">
+
+    <h1>VogueWear</h1>
+    <p>¡Empieza a explorar y lleva tu estilo al siguiente nivel con VogueWear!
+
+    </p>
+
+  </div>
+  <div class="btn">
+    <a id="productsBtn" href="#products">Productos</a>
+
+  </div>
+
+</div>
+
+{{!-- <h1>Productos </h1>
+<br />
 <h2>Bienvenido/a {{first_name}} {{last_name}}</h2>
 <h4>Datos:</h4>
 <h3>Rol: {{rol}}</h3>
-<h3>Edad: {{age}}</h3>
-<div class="contenedor-prods">
-{{#each payload}}
+<h3>Edad: {{age}}</h3> --}}
+<div  class="contenedor-prods">
+  <div id="products2" id="productsBtn2">
 
-  
-  <div class="products">
-    <h1>Title: {{this.title}}</h1>
- 
-    <p>Id: {{this._id}}</p>
-    
-    <p>Description: {{this.description}}</p>
-    <p>Price: {{this.price}}</p>
-    <p>Status: {{this.status}}</p>
-    <p>Code: {{this.code}}</p>
-    <p>Stock: {{this.stock}}</p>
-    <button class="buttonAdd" id="{{this._id}}">Agregar al carrito</button>
   </div>
-{{/each}}
+    <div id="products" id="productsBtn"  class="seccion2">
+      {{#each payload}}
+        <div class="cartas">
+          <h1>{{this.title}}</h1>
+          <img src="{{this.thumbnail}}" alt="" />
+          <div class="cont">
+            <p>{{this.description}}</p>
+            <p>Price: {{this.price}}</p>
+          </div>
+          <div class="cont">
+            <p>Status: {{this.status}}</p>
+            <p>Stock: {{this.stock}}</p>
+          </div>
+          <button class="buttonAdd" id="{{this._id}}">Agregar al carrito</button>
+        </div>
+      {{/each}}
+    </div>
   </div>
-  </div>
-
 {{#if hasPrevPage}}
-    <button><a href="/products?page={{prevPage}}">Anterior</a></button>
+  <button><a href="/products?page={{prevPage}}">Anterior</a></button>
 {{/if}}
 
 {{#if hasNextPage}}
-    <button><a href="/products?page={{nextPage}}">Siguiente</a></button>
+  <button><a href="/products?page={{nextPage}}">Siguiente</a></button>
 {{/if}}
 
-
-<script src="js/products.js"></script> 
+<script src="../path/to/flowbite/dist/flowbite.min.js"></script>
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"
+></script>
+<script src="js/scroll.js"></script>
+<script src="js/products.js"></script>

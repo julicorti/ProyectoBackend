@@ -1,3 +1,4 @@
+
 export const swaggerConfiguration = {
     definition: {
         openapi: '3.0.1',

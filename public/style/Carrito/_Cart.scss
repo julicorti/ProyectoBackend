@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Radio+Canada+Big:ital,wght@0,400..700;1,400..700&family=Roboto+Slab:wght@100..900&display=swap');
+
+.paginaC {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: "Roboto Slab", sans-serif;
+    color: #333;
+
+    h1 {
+        font-size: 36px;
+        font-family: "Radio Canada Big", sans-serif;
+        margin-bottom: 20px;
+    }
+
+    .contenedor-prodsC {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .product {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        background-color: #fff;
+
+        &:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-info {
+            display: flex;
+            align-items: center;
+            flex: 2;
+
+            img {
+                width: 80px;
+                height: 80px;
+                object-fit: cover;
+                margin-right: 20px;
+                border-radius: 10px;
+            }
+
+            .details {
+                display: flex;
+                flex-direction: column;
+
+                p {
+                    margin: 0;
+                    margin-bottom: 5px;
+
+                    &:last-child {
+                        margin-bottom: 0;
+                    }
+
+                    &.title {
+                        font-size: 18px;
+                        font-weight: bold;
+                    }
+
+                    &.sku,
+                    &.stock-status,
+                    &.price,
+                    &.category,
+                    &.code,
+                    &.thumbnail {
+                        font-size: 14px;
+                        color: #555;
+                    }
+
+                    &.edit-link {
+                        font-size: 12px;
+                        color: #007BFF;
+                        cursor: pointer;
+
+                        &:hover {
+                            text-decoration: underline;
+                        }
+                    }
+                }
+            }
+        }
+
+        .product-quantity,
+        .product-total {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex: 1;
+            font-size: 16px;
+        }
+
+        .product-quantity {
+            input {
+                width: 50px;
+                padding: 5px;
+                text-align: center;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                margin-right: 10px;
+            }
+        }
+
+        .product-total {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .remove-product {
+            cursor: pointer;
+            color: #ff0000;
+            font-size: 20px;
+
+            &:hover {
+                color: #cc0000;
+            }
+        }
+    }
+}

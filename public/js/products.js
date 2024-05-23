@@ -1,9 +1,9 @@
 const btns = document.getElementsByClassName('buttonAdd');
 const logoutBtn = document.getElementById("logoutBtn");
 
-const addProductToCart = async (pId) => {
+const addProductToCart = async (pId, cId) => {
     try {
-        const result = await fetch(`http://localhost:8080/api/carts/65b08f724b79e896e7f41de6/product/${pId}`, {
+        const result = await fetch(`http://localhost:8080/api/carts/${cId}}/product/${pId}`, {
             body: JSON.stringify({
                 quantity: 1
             }),
@@ -25,7 +25,8 @@ const addProductToCart = async (pId) => {
 
 for(let btn of btns){
     btn.addEventListener('click', (event) => {
-        addProductToCart(btn.id);
+        console.log(btn.getAttribute("cart"))
+        addProductToCart(btn.id, btn.getAttribute("cart"));
     });
 }
 

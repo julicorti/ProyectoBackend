@@ -18,7 +18,7 @@ const productSchema = mongoose.Schema({
       default: "M"
   },
   "available": Boolean, 
-  "thunbnail": String
+  "thumbnail": String
 })
 productSchema.plugin(mongoosePaginate);
 export const productModel = mongoose.model(productCollection, productSchema);

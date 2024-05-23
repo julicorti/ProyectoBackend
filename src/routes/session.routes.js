@@ -3,6 +3,7 @@ import { userModel } from "../../dao/models/user.model.js";
 import { createHash, isValidPassword } from "../utils/bcrypt.js";
 import passport from "passport";
 import { getCurrentUser } from "../controllers/session.controller.js";
+import CartModel from "../../dao/models/carts.model.js";
 const sessionRouter = Router();
 sessionRouter.post(
   "/register",
@@ -19,12 +20,22 @@ sessionRouter.post(
     if (!req.user) {
       return res.status(400).send({ message: "Error with credential" });
     }
+    let c
+    c = await CartModel.find({ user: req.user._id.toString() })
+    if (!c[0]) {
+      c = await CartModel.create({ user: req.user._id.toString() });
+    }else{
+      c = c[0]
+    }
     req.session.user = {
       first_name: req.user.first_name,
       last_name: req.user.last_name,
       age: req.user.age,
+      rol: req.user.rol,
       email: req.user.email,
+      cId: c._id.toString()
     };
+    console.log(req.session.user);
     res.redirect("/login");
   }
 );
@@ -61,14 +72,15 @@ sessionRouter.post("/restore-password", async (req, res) => {
 sessionRouter.get(
   "/github",
   passport.authenticate("github", { scope: ["user:email"] }),
+  (req, res) => {}
+);
+sessionRouter.get(
+  "/githubcallback",
+  passport.authenticate("github", { failureRedirect: "/login" }),
   (req, res) => {
-    
+    req.session.user = req.user;
+    res.redirect("/products");
   }
 );
-sessionRouter.get('/githubcallback', passport.authenticate('github', {failureRedirect: '/login'}),
- (req, res)=>{
-    req.session.user = req.user;
-    res.redirect('/products');
-})
 sessionRouter.get("/current", getCurrentUser);
 export default sessionRouter;

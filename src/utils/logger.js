@@ -1,4 +1,5 @@
-import winston from "winston";
+import winston from 'winston';
+
 const customLevelOptions = {
     levels: {
         debug: 0,
@@ -16,34 +17,32 @@ const customLevelOptions = {
         error: 'magenta',
         fatal: 'red'
     }
-}
-
+};
 
 const logger = winston.createLogger({
     levels: customLevelOptions.levels,
     transports: [
         new winston.transports.Console({
-            level: process.env.NODE_ENV === 'production' ? 'info' : 'debug', 
+            level: process.env.NODE_ENV === 'production' ? 'info' : 'debug',
             format: winston.format.combine(
-                winston.format.colorize({colors: customLevelOptions.colors}),
+                winston.format.colorize({ colors: customLevelOptions.colors }),
                 winston.format.simple()
             )
         }),
         new winston.transports.File({
-            level: 'info', 
+            level: 'info',
             filename: './customLog.log',
             format: winston.format.simple()
         })
     ]
-})
-console.debug = logger.debug;
-console.http = logger.http;
-console.info = logger.info;
-console.warning = logger.warning;
-console.error = logger.error;
-console.fatal = logger.fatal;
+});
+
+// No modifiques los métodos del objeto console directamente.
+// En su lugar, usa el logger en tu código donde lo necesites.
+
 export const addLogger = (req, res, next) => {
-   
     req.logger = logger;
-      next();
-    };
+    next();
+};
+
+export default logger;

@@ -15,18 +15,19 @@ import { ProductMongoManager } from "../dao/ManagerDB/productMongo.js";
 import viewsRouters from "./routes/views.routes.js";
 import sessionRouter from "./routes/session.routes.js";
 import passport from "passport";
-
+import paymentRoutes from "./routes/payment.routes.js";
 import initializePassport from "./config/passport.config.js";
 import { errorHandler } from "./middlewares/error.js";
 import { addLogger } from "./utils/logger.js";
 import swaggerJsDoc from 'swagger-jsdoc';
 import swaggerUiExpress from 'swagger-ui-express';
-import { swaggerConfiguration } from './utils/swagger-configuration.js';
+import { swaggerConfiguration } from './config/swagger-configuration.js';
 const PORT = 8080;  
 const app = express();
 
 
 app.use(express.json())
+app.use(addLogger)
 app.use(express.urlencoded({ extended: true}))
 app.use(express.static('public'))
 
@@ -36,11 +37,10 @@ const hbs = handlebars.create({
     allowProtoPropertiesByDefault: true
   }
 });
-const specs = swaggerJsDoc(swaggerConfiguration);
+ const specs = swaggerJsDoc(swaggerConfiguration);
 console.log(specs)
 app.use('/apidocs', swaggerUiExpress.serve, swaggerUiExpress.setup(specs));
-
-app.use(addLogger)
+ 
 app.get('/PruebaHTTP', (req, res) =>{
   res.send({message: 'PruebaHTTP!!'});
 })
@@ -53,7 +53,7 @@ app.get('/loggerTest', (req, res) => {
   req.logger.fatal('Esto es un error FATAL');
  
   res.send({message: 'Error de prueba!'});
-});
+}); 
 app.engine('handlebars',hbs.engine) 
 app.set('views','src/views')
 app.set('view engine', 'handlebars')
@@ -79,8 +79,18 @@ app.get('/', (req, res) =>{
 })
 const productMongoManager = new ProductMongoManager();
 
+app.get('/perfil', (req, res) => {
+  
+  const { user } = req.session;
 
-
+  res.render('perfil', {...user});
+ 
+});
+app.get('/payment', (req, res) => {
+  
+  res.render('payment');
+ 
+});
 
 
 /* Routes */
@@ -88,8 +98,9 @@ app.use("/api/products", productsRouter);
 app.use("/api/carts", cartsRouter);
 app.use("/api/messages", cartsRouter);
 app.use('/', viewsRouters)
-
+app.use('/payment', paymentRoutes);
 app.use('/api/session', sessionRouter);
+
 app.use("/chat", chatRouter);
 app.use(errorHandler)
 mongoose.connect("mongodb+srv://admin:admin@julieta.8xkj6p9.mongodb.net/ecommerce?retryWrites=true&w=majority");

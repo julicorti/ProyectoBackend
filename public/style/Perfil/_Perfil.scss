@@ -1,0 +1,42 @@
+.pagP {
+  height: 100vh;
+  background-color: rgb(251, 251, 251);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .cajaP {
+    .inicio{
+      
+      width: 100%;
+      display: flex;
+      justify-content: first baseline;
+      flex-direction: column;
+    }
+    height: 500px;
+    width: 700px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    border-radius: 15px;
+    box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+    flex-direction: column;
+    background-color: rgba(237, 236, 236, 0.614);
+
+    .contenidoP {
+      width: 100%;
+      height: 100px;
+
+      display: flex;
+      justify-content: space-evenly;
+      flex-direction: row;
+    }
+    h1 {
+      color: black;
+      font-size: 50px;
+    }
+    h2 {
+      padding: 10px;
+      font-size: 18px;
+    }
+  }
+}

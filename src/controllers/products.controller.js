@@ -31,42 +31,43 @@ class Products {
   }
   async getProductById(req, res) {
     try {
-      const { pId } = req.params;
-      const resultado = await Product.getProductById(pId);
-      if (resultado.message === "OK") {
-        return res.status(200).json(resultado);
-      }
-      res.status(400).json(resultado);
+        const { pId } = req.params;
+        const resultado = await Product.getProductById(pId);
+        if (resultado.message === "OK") {
+            return res.status(200).json(resultado);
+        }
+        res.status(400).json(resultado);
     } catch (err) {
-      req.logger.error('Error al obtener el producto por ID:', err);
-      CustomErrors.createError({
-        name: 'GetProductByIdError',
-        cause: 'Database error',
-        message: 'No se pudo obtener el producto.',
-        code: ErrorEnum.PRODUCT_NOT_FOUND
-      })
+        req.logger.error('Error al obtener el producto por ID:', err);
+        CustomErrors.createError({
+            name: 'GetProductByIdError',
+            cause: 'Database error',
+            message: 'No se pudo obtener el producto.',
+            code: ErrorEnum.PRODUCT_NOT_FOUND
+        });
+        res.status(500).json({ message: 'Error al obtener el producto por ID' });
     }
+}
 
-    /*   res.send(products); */
-  }
-
-  async addProduct(req, res) {
-    try {
-      const resultado = await Product.addProduct();
+async addProduct(req, res) {
+  try {
+      const resultado = await Product.addProduct(req.body); // Asegúrate de pasar los datos correctos
       if (resultado.message === "OK") {
-        return res.status(200).json(resultado);
+          return res.status(200).json(resultado);
       }
       res.status(400).json(resultado);
-    } catch (err) {
+  } catch (err) {
       req.logger.error('Error al agregar producto:', err);
-      CustomErrors.createError({
-        name: 'CreateProductError',
-        cause: 'Database error',
-        message: 'No se pudo crear el producto.',
-        code: ErrorEnum.CREATE_PRODUCT_ERROR    
-      })
-    }
+      const customError = CustomErrors.createError({
+          name: 'CreateProductError',
+          message: 'No se pudo crear el producto.',
+          cause: 'Database error',
+          code: 5
+      });
+      // Devolver una respuesta al cliente
+      return res.status(500).json({ message: customError.message, code: customError.code, cause: customError.cause });
   }
+}
   async updateProduct(req, res) {
     try {
       const id = req.params.pId;
@@ -86,31 +87,33 @@ class Products {
   async deleteProduct(req, res) {
     const { pId } = req.params;
     try {
-      const products = new ProductMongoManager();
-      const productDeleted = await products.deleteProduct({ _id: pId });
-      if (productDeleted.message === "OK")
-        return res.status(200).json(productDeleted.rdo);
-
-      return res.status(404).json(productDeleted.rdo);
+        const products = new ProductMongoManager();
+        const productDeleted = await products.deleteProduct({ _id: pId });
+        if (productDeleted.message === "OK") {
+            return res.status(200).json(productDeleted.rdo);
+        }
+        res.status(404).json(productDeleted.rdo);
     } catch (err) {
-      req.logger.error('Error al eliminar producto:', err);
-      res.status(400).json({ menssage: err });
+        req.logger.error('Error al eliminar producto:', err);
+        res.status(500).json({ message: 'Error al eliminar el producto' });
     }
-  }
-  async generateProduct(req, res){
+}
+  async generateProduct(req, res) {
     try {
-      const productos = generateProducts();
-      res.send("Se almaceno con exito!")
-      res.json(productos);
-  } catch (error) {
-    req.logger.error('Error al generar producto:', error);
-      CustomErrors.createError({
-        name: 'CreateProductError',
-        cause: 'Database error',
-        message: 'No se pudo crear el producto.',
-        code: ErrorEnum.CREATE_PRODUCT_ERROR    
-      })
-  }
-  }
+        const productos = generateProducts();
+        res.send("Se almacenó con éxito!");
+        res.json(productos);
+    } catch (error) {
+        req.logger.error('Error al generar producto:', error);
+        CustomErrors.createError({
+            name: 'GenerateProductError',
+            cause: 'Database error',
+            message: 'No se pudo generar el producto.',
+            code: ErrorEnum.GENERATE_PRODUCT_ERROR
+        });
+        res.status(500).json({ message: 'Error al generar el producto' });
+    }
+}
+
 }
 export default new Products();

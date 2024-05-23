@@ -32,9 +32,11 @@ class Carts {
     const cartById = await Cart.getCartId(cId);
     if (!cartById) {
       res.status(404).send({ message: "cart not found" });
+    } else {
+      res.render('carts', { products: cartById.rdo.products });
     }
-    res.send(cartById);
   }
+
   async addProductToCart(req, res) {
     try {
       const { cId, pId } = req.params;

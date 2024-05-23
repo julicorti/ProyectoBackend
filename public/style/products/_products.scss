@@ -1,13 +1,64 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Radio+Canada+Big:ital,wght@0,400..700;1,400..700&display=swap');
+
+
 .pagina {
-  width: 100%;
-background-color: aquamarine;
+ height: 100vh;
+ width: 100%;
+background-image: url("../../img/imgC.jpg");
+backdrop-filter: blur(4px);
+background-size: cover;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ flex-direction: column;
+ .btn{
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
+  height: 100px;
+  width: 400px;
+  margin-top: 50px;
+  a{
+    width: 140px;
+    height: 50px;
+    background-color: black;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+  }
+ }
+ .contenido{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+flex-direction: column;
+color: white;
+  width: 600px;
+  height: 200px;
+  h1{
+    color: white;
+    font-family: "Radio Canada Big", sans-serif;
+    font-size: 100px;
+    font-weight: 600;
+  }
+  p{
+    font-size: 15px;
+  }
+ }
+ &::before {
+  content: "";
+  inset: 0;
+  position: absolute;
+  z-index: -1;
+
+  backdrop-filter: blur(4px);
+}
   .contenedor-prods {
-   height: 50vh;
-   width: 50vw;
+   height: 100vh;
+   width: 100%;
    background-color: bisque;
     display: flex;
     justify-content: center;
@@ -16,7 +67,7 @@ background-color: aquamarine;
     flex-direction: row;
     width: 20%;
     gap: 10px;
-
+ 
     .products {
         display: flex;
         justify-content: space-evenly;
@@ -28,6 +79,8 @@ background-color: aquamarine;
       width: 500px;
       background-color: rgba(30, 145, 199, 0.621);
       height: 300px;
+      gap: 10px;
+      margin-top: 50px;
       border-radius: 10px;
       font-family: Poppins, sans-serif;
       h1{
